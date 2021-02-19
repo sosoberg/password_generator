@@ -3,6 +3,8 @@ var specialCharacter = '!"#$%&()*+,-./:;<>=?@[]_{}|~';
 var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
+
+//Math.random function to be called later in the writePassword function
 randomSpec = (typeOfCharacter) => {
   var selectedCharacter = typeOfCharacter [Math.floor(Math.random()*typeOfCharacter.length)]
   string.push(selectedCharacter)
@@ -17,19 +19,20 @@ function writePassword() {
   var numberSelect = window.prompt("Numerical Characters? (Yes/No)");
   var uppSelect = window.prompt("UpperCase Characters? (Yes/No)");
   var lowSelect = window.prompt("LowerCase Characters? (Yes/No)");
+
+  //make all prompts match to uppercase
   specSelect = specSelect.toUpperCase();
   uppSelect = uppSelect.toUpperCase();
   lowSelect = lowSelect.toUpperCase();
+  
   numberSelect = numberSelect.toUpperCase();
-  var characters = '';
-  if (specSelect === "YES" || numberSelect === "YES" || uppSelect === "YES" || lowSelect === "YES") {
-    console.log("YAY")
-    console.log(lengthSelect)
+  if (specSelect === "YES" && numberSelect === "YES" && uppSelect === "YES" && lowSelect === "YES") {
     while (string.length < lengthSelect){
       randomSpec(specialCharacter)
       randomSpec(upperCase)
       randomSpec(lowerCase)
       randomSpec(numbers)  
+      return string
 //      specialCharacter [Math.floor(Math.random()*specialCharacter.length)]
 //      lowerCase [Math.floor(Math.random()*lowerCase.length)]
 //      upperCase [Math.floor(Math.random()*upperCase.length)]
@@ -38,37 +41,106 @@ function writePassword() {
 //      string.push(lowerCase [Math.floor(Math.random()*lowerCase.length)])
 //      string.push(upperCase [Math.floor(Math.random()*upperCase.length)])
 //      string.push(numbers [Math.floor(Math.random()*numbers.length)])
-    }
+    };
     console.log(string)
-    characters = string.concat(specialCharacter, numbers, upperCase, lowerCase);
   } else if (specSelect === "YES" && numberSelect === "YES" && uppSelect === "YES") {
-    characters = string.concat(specialCharacter, numbers, upperCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (specSelect === "YES" && numberSelect === "YES" && lowSelect === "YES") {
-    characters = string.concat(specialCharacter, numbers, lowerCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (specSelect === "YES" && uppSelect === "YES" && lowSelect === "YES") {
-    characters = string.concat(specialCharacter, upperCase, lowerCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+    };
+
   } else if (numberSelect === "YES" && uppSelect === "YES" && lowSelect === "YES") {
-    characters = string.concat(numbers, upperCase, lowerCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (specSelect === "YES" && numberSelect === "YES") {
-    characters = string.concat(specialCharacter, numbers);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (specSelect === "YES" && uppSelect === "YES") {
-    characters = string.concat(specialCharacter, upperCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (specSelect === "YES" && lowSelect === "YES") {
-    characters = string.concat(specialCharacter, lowerCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (numberSelect === "YES" && uppSelect === "YES") {
-    characters = string.concat(numbers, upperCase);
+    while (string.length < lengthSelect){
+      randomSpec(specialCharacter)
+      randomSpec(upperCase)
+      randomSpec(lowerCase)
+      randomSpec(numbers) 
+      return string
+    };
+
   } else if (numberSelect === "YES" && lowSelect === "YES") {
-    characters = string.concat(numbers, lowerCase);
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
   } else if (uppSelect === "YES" && lowSelect === "YES") {
-    
-    characters = string.concat(upperCase, lowerCase);
-  }
+      while (string.length < lengthSelect){
+        randomSpec(specialCharacter)
+        randomSpec(upperCase)
+        randomSpec(lowerCase)
+        randomSpec(numbers) 
+        return string
+      };
+
+  } console.log(string)
+
   
   
 
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-  //passwordText.value = password;
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
