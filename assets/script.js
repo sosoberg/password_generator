@@ -21,10 +21,10 @@ function writePassword() {
   // if statement to make sure length fits in character requirements
   if (lengthSelect > 128) {
     manyLengthSelect = window.prompt("Too many characters, please try again(1 to 128")
-    lengthSelect = manyLengthSelect
+    lengthSelect = manyLengthSelect;
   } else if (lengthSelect < 8) {
     fewLengthSelect = window.prompt("Too few characters, please try again (1 to 128)")
-    lengthSelect = fewLengthSelect
+    lengthSelect = fewLengthSelect;
   }
 
   // if user fails a second time to meet requirements, end the program
@@ -33,6 +33,7 @@ function writePassword() {
   } else if (lengthSelect <8) {
     return;
   }
+
   var specSelect = window.prompt("Special Characters? (Yes/No)");
   var numberSelect = window.prompt("Numerical Characters? (Yes/No)");
   var uppSelect = window.prompt("UpperCase Characters? (Yes/No)");
@@ -42,10 +43,7 @@ function writePassword() {
   uppSelect = uppSelect.toUpperCase();
   numberSelect = numberSelect.toUpperCase();
 
-  if (lengthSelect < 8) {
-    return;
-  }
-
+  // if functions to select from local data based upon users input
   if (specSelect === "YES" && numberSelect === "YES" && uppSelect === "YES") {
     while (string.length < lengthSelect) {
       randomSpec(specialCharacter);
@@ -75,32 +73,11 @@ function writePassword() {
         randomSpec(numbers);
       };
 
-  } else if (specSelect === "YES" && numberSelect === "YES") {
-      while (string.length < lengthSelect) {
-        randomSpec(specialCharacter);
-        randomSpec(lowerCase);
-        randomSpec(numbers);
-      };
-
-  } else if (specSelect === "YES" && uppSelect === "YES") {
-      while (string.length < lengthSelect) {
-        randomSpec(specialCharacter);
-        randomSpec(upperCase);
-        randomSpec(lowerCase);
-      };
-
   } else if (specSelect === "YES") {
       while (string.length < lengthSelect) {
         randomSpec(specialCharacter);
         randomSpec(lowerCase);
       };
-
-  } else if (numberSelect === "YES" && uppSelect === "YES") {
-    while (string.length < lengthSelect) {
-      randomSpec(upperCase);
-      randomSpec(lowerCase);
-      randomSpec(numbers);
-    };
 
   } else if (numberSelect === "YES") {
       while (string.length < lengthSelect) {
@@ -118,8 +95,18 @@ function writePassword() {
     while (string.length < lengthSelect) {
       randomSpec(lowerCase);
     }
-  } console.log(string)
+  }
+
+  // for loop to remove characters over lengthSelect value
+  for (let i = string.length; i > lengthSelect; i--) {
+    var something = string.pop();
+    console.log(something)
+  }
+
+  // remove the commas of the Array
   var joinedString = string.join('');
+
+  //insert the data from the function into the HTML div class
   document.getElementById('password').innerHTML = joinedString;
 }
 
